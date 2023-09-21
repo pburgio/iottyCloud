@@ -6,9 +6,9 @@ build-backend = "hatchling.build"
 name = "iottycloud"
 version = "0.0.1"
 authors = [
-  { name="Paolo Burgio", email="paolo.burgio@iotty.com" },
+  { name="Example Author", email="author@example.com" },
 ]
-description = "Implementation of a proxy to access to iotty Cloud ecosystem"
+description = "A small example package"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
