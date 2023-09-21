@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "iottycloud"
+version = "0.0.1"
+authors = [
+  { name="Paolo Burgio", email="paolo.burgio@iotty.com" },
+]
+description = "Implementation of a proxy to access to iotty Cloud ecosystem"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://iotty.com"
+"Bug Tracker" = "mailto:support@iotty.com"
