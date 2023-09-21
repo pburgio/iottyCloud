@@ -2,8 +2,8 @@
 import logging
 from typing import Any
 
-from lightswitch import LightSwitch
-from verbs import (
+from .lightswitch import LightSwitch
+from .verbs import (
     DEVICE_ID,
     DEVICE_NAME,
     DEVICE_TYPE,

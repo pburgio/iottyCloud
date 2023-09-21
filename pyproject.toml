@@ -20,3 +20,8 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://iotty.com"
 "Bug Tracker" = "mailto:support@iotty.com"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  ".", "src",
+]
