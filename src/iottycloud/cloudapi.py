@@ -22,7 +22,15 @@ class CloudApi(ABC):
 
     def __init__(self, websession: ClientSession, host: str, client_id: str) -> None:
         """Initialize the auth."""
-        # _LOGGER.debug("__init__ host %s", host)
+        #_LOGGER.debug("__init__ host %s", host)
+        
+        if websession is None:
+            raise ValueError("websession")
+        if host is None:
+            raise ValueError("host")
+        if client_id is None:
+            raise ValueError("client_id")
+        
         self.websession = websession
         self.host = host
         self._client_id = client_id
