@@ -17,7 +17,7 @@ $pip install iottycloud
 You can run the test suite with pytest:
 ```
 $ cd src
-$ pytest
+$ python3 -m pytest
 ```
 
 You can check the correctness of your python code using pylint, as usual:
