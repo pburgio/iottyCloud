@@ -7,6 +7,8 @@ name = "iottycloud"
 version = "0.0.1"
 authors = [
   { name="Paolo Burgio", email="paolo.burgio@gmail.com" },
+  { name="Luca Marzaduri", email="luca.marzaduri@iotty.com" },
+  { name="Shapour Nemati", email="shapour.nemati@iotty.com" },
 ]
 description = "A Python library to interact with iotty CloudApi"
 readme = "README.md"
