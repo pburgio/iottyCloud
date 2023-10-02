@@ -1,4 +1,4 @@
-# A Python library to interact with iotty CloudApi
+# iottycloud: a Python library to interact with iotty CloudApi
 ![iotty Logo](https://iotty.it/cdn/shop/files/logo-iotty_100x@2x.png)
 
 A Python library to interact with iotty CloudApi. To use this library in one of your projects, you must first become our Partner. Please [send us an email](mailto:support@iotty.com).
