@@ -7,7 +7,7 @@ class Device:
     """Generic iotty Device."""
 
     def __init__(
-        self, device_id: str, sn_: str, device_type: str, device_name: str
+            self, device_id: str, sn_: str, device_type: str, device_name: str
     ) -> None:
         """Build the generic iotty Device."""
         self.device_id = device_id

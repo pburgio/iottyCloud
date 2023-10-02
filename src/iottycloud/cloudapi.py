@@ -5,14 +5,14 @@ import logging
 from typing import Any
 
 from aiohttp import ClientResponse, ClientSession
-from .errors import (
+from errors import (
     BadRequestException,
     ForbiddenException,
     NotFoundException,
     UnauthorizedException,
 )
-from .utils import Factory
-from .verbs import HTTP_HEADER_CLIENT_ID
+from utils import Factory
+from verbs import HTTP_HEADER_CLIENT_ID
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -23,14 +23,14 @@ class CloudApi(ABC):
     def __init__(self, websession: ClientSession, host: str, client_id: str) -> None:
         """Initialize the auth."""
         #_LOGGER.debug("__init__ host %s", host)
-        
+
         if websession is None:
             raise ValueError("websession")
         if host is None:
             raise ValueError("host")
         if client_id is None:
             raise ValueError("client_id")
-        
+
         self.websession = websession
         self.host = host
         self._client_id = client_id
