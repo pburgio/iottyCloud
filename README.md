@@ -1,20 +1,27 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# A Python library to interact with iotty CloudApi
+![iotty Logo](https://iotty.it/cdn/shop/files/logo-iotty_100x@2x.png)
+
+A Python library to interact with iotty CloudApi. To use this library in one of your projects, you must first become our Partner. Please [send us an email](mailto:support@iotty.com).
+
+We're working on a public version of the CloudApi documentation. Stay tuned!
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+To install the library, simply use pip
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+```
+$pip install iottycloud
+```
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Test and pylint
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+You can run the test suite with pytest:
+```
+$ cd src
+$ pytest
+```
+
+You can check the correctness of your python code using pylint, as usual:
+```
+$ cd src
+$ pylint iottycloud
+```
