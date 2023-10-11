@@ -22,3 +22,6 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/pburgio/iottycloud"
 "Bug Tracker" = "https://github.com/pburgio/iottycloud/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/iottycloud"]

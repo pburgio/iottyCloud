@@ -5,14 +5,14 @@ import logging
 from typing import Any
 
 from aiohttp import ClientResponse, ClientSession
-from errors import (
+from iottycloud.errors import (
     BadRequestException,
     ForbiddenException,
     NotFoundException,
     UnauthorizedException,
 )
-from utils import Factory
-from verbs import HTTP_HEADER_CLIENT_ID
+from iottycloud.utils import Factory
+from iottycloud.verbs import HTTP_HEADER_CLIENT_ID
 
 _LOGGER = logging.getLogger(__name__)
 

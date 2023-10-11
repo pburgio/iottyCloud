@@ -2,8 +2,8 @@
 
 import logging
 
-from device import Device
-from verbs import STATUS_ON
+from iottycloud.device import Device
+from iottycloud.verbs import STATUS_ON
 
 _LOGGER = logging.getLogger(__name__)
 
