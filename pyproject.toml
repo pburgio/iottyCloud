@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "iottycloud"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="Paolo Burgio", email="paolo.burgio@gmail.com" },
   { name="Luca Marzaduri", email="luca.marzaduri@iotty.com" },
