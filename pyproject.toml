@@ -25,3 +25,9 @@ classifiers = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/iottycloud"]
+
+[tool.hatch.build]
+exclude = [
+  "/docs",
+  "/tests",
+]
