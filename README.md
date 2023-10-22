@@ -19,7 +19,7 @@ $ pip install iottycloud
 You can run the test suite with pytest:
 
 ```
-$ cd src
+$ cd tests
 $ python3 -m pytest
 ```
 
