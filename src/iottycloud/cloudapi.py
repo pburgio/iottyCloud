@@ -22,7 +22,6 @@ class CloudApi(ABC):
 
     def __init__(self, websession: ClientSession, host: str, client_id: str) -> None:
         """Initialize the auth."""
-        #_LOGGER.debug("__init__ host %s", host)
 
         if websession is None:
             raise ValueError("websession")
@@ -51,6 +50,7 @@ class CloudApi(ABC):
 
         ret = []
         for _d in devices:
+            _LOGGER.debug("Creating device from %s", _d)
             new_device = Factory.create_device(_d)
             if new_device is not None:
                 ret.append(new_device)
@@ -63,9 +63,17 @@ class CloudApi(ABC):
 
         await self.__handle_error(response)
 
-        res = await response.json()
+        return await response.json()
 
-        return res
+    async def command(self, device_id: str, command: str) -> Any:
+        """Issue a command to a iotty device EP."""
+        response = await self.__request("POST", f"api/device/{device_id}/command/{command}")
+
+        _LOGGER.debug("Response from server: %s", response.status)
+
+        await self.__handle_error(response)
+
+        return await response.json()
 
     async def __handle_error(self, response: ClientResponse) -> None:
         """Handle possible errors from a request."""

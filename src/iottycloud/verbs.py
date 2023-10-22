@@ -14,6 +14,9 @@ STATUS = "status"
 STATUS_ON = "on"
 STATUS_OFF = "off"
 
+COMMAND_TURNON = "turnon"
+COMMAND_TURNOFF = "turnoff"
+
 LS_DEVICE_TYPE_UID = "com.iotty.lightswitch"
 
 SUPPORTED_DEVICE_TYPES = [LS_DEVICE_TYPE_UID]
