@@ -23,3 +23,10 @@ def test_creation_noparams_clientid_error():
         _ = CloudApiConcrete(requests.Session(), "host", None)
     except ValueError as excinfo:
         assert str(excinfo) == "client_id"
+
+def test_creation_ok():
+    """Creation completed succesfully."""
+
+    sut = CloudApiConcrete(requests.Session(), "host", "client_id")
+
+    assert sut is not None
