@@ -10,6 +10,7 @@ from iottycloud.errors import (
     ForbiddenException,
     NotFoundException,
     UnauthorizedException,
+    CloudError,
 )
 from iottycloud.utils import Factory
 from iottycloud.verbs import HTTP_HEADER_CLIENT_ID
@@ -78,6 +79,14 @@ class CloudApi(ABC):
     async def __handle_error(self, response: ClientResponse) -> None:
         """Handle possible errors from a request."""
 
+        _LOGGER.debug("Response from server: %d", response.status)
+
+        if response.status / 100 > 2:
+            _LOGGER.warning(
+                "Unable to fecth devices from server (Http status %d)", response.status)
+            _LOGGER.debug(
+                "Server replied: %s", await response.text())
+
         if response.status == 400:
             raise BadRequestException("Bad request")
         if response.status == 401:
@@ -86,6 +95,8 @@ class CloudApi(ABC):
             raise ForbiddenException("Forbidden")
         if response.status == 404:
             raise NotFoundException("Not found")
+        if response.status / 100 == 5:
+            raise CloudError("Internal server error")
 
     async def __request(self, method: str, url: str, **kwargs) -> ClientResponse:
         """Make a request."""

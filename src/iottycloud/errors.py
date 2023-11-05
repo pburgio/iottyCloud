@@ -15,3 +15,7 @@ class ForbiddenException(Exception):
 
 class NotFoundException(Exception):
     """Access to a non-existing EP for iotty Cloud."""
+
+
+class CloudError(Exception):
+    """Internal error in iotty Cloud (i.e., HTTP 5xx)."""
