@@ -26,10 +26,10 @@ class LightSwitch(Device): # pylint: disable=too-few-public-methods
         _LOGGER.debug("[%s] updating status to '%s'", self.name, status)
         self.is_on = status == STATUS_ON
 
-    def cmd_turn_on(self) -> None:
+    def cmd_turn_on(self) -> str:
         """Create a request to turn on the LS"""
         return COMMAND_TURNON
 
-    def cmd_turn_off(self) -> None:
+    def cmd_turn_off(self) -> str:
         """Create a request to turn off the LS"""
         return COMMAND_TURNOFF
