@@ -3,12 +3,14 @@ import logging
 from typing import Any
 
 from iottycloud.lightswitch import LightSwitch
+from iottycloud.shutter import Shutter
 from iottycloud.verbs import (
     DEVICE_ID,
     DEVICE_NAME,
     DEVICE_TYPE,
     SERIAL_NUMBER,
-    SUPPORTED_DEVICE_TYPES,
+    LS_DEVICE_TYPE_UID,
+    SH_DEVICE_TYPE_UID
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -35,14 +37,21 @@ class Factory: # pylint: disable=too-few-public-methods
 
         device_type = json_dict[DEVICE_TYPE]
 
-        if device_type not in SUPPORTED_DEVICE_TYPES:
-            _LOGGER.warning("Unknown iotty Device type '%s'", device_type)
-            return None
+        if device_type is LS_DEVICE_TYPE_UID:
+            return LightSwitch(
+                json_dict[DEVICE_ID],
+                json_dict[SERIAL_NUMBER],
+                json_dict[DEVICE_TYPE],
+                json_dict[DEVICE_NAME],
+            )
 
-        # Add missing types
-        return LightSwitch(
-            json_dict[DEVICE_ID],
-            json_dict[SERIAL_NUMBER],
-            json_dict[DEVICE_TYPE],
-            json_dict[DEVICE_NAME],
-        )
+        if device_type is SH_DEVICE_TYPE_UID:
+            return Shutter(
+                json_dict[DEVICE_ID],
+                json_dict[SERIAL_NUMBER],
+                json_dict[DEVICE_TYPE],
+                json_dict[DEVICE_NAME],
+            )
+
+        _LOGGER.warning("Unknown iotty Device type '%s'", device_type)
+        return None
