@@ -14,9 +14,19 @@ STATUS = "status"
 STATUS_ON = "on"
 STATUS_OFF = "off"
 
+STATUS_OPENING = "opening"
+STATUS_CLOSING = "closing"
+STATUS_STATIONATRY = "stationary"
+
 COMMAND_TURNON = "turnon"
 COMMAND_TURNOFF = "turnoff"
 
-LS_DEVICE_TYPE_UID = "com.iotty.lightswitch"
+COMMAND_OPEN = "open"
+COMMAND_CLOSE = "close"
+COMMAND_STOP = "stop"
+COMMAND_MOVE_TO_PERCENTAGE = "moveto"
 
-SUPPORTED_DEVICE_TYPES = [LS_DEVICE_TYPE_UID]
+LS_DEVICE_TYPE_UID = "com.iotty.lightswitch"
+SH_DEVICE_TYPE_UID = "com.iotty.shutter"
+
+SUPPORTED_DEVICE_TYPES = [LS_DEVICE_TYPE_UID, SH_DEVICE_TYPE_UID]
