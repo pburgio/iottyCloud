@@ -37,7 +37,7 @@ class Factory: # pylint: disable=too-few-public-methods
 
         device_type = json_dict[DEVICE_TYPE]
 
-        if device_type is LS_DEVICE_TYPE_UID:
+        if device_type == LS_DEVICE_TYPE_UID:
             return LightSwitch(
                 json_dict[DEVICE_ID],
                 json_dict[SERIAL_NUMBER],
@@ -45,7 +45,7 @@ class Factory: # pylint: disable=too-few-public-methods
                 json_dict[DEVICE_NAME],
             )
 
-        if device_type is SH_DEVICE_TYPE_UID:
+        if device_type == SH_DEVICE_TYPE_UID:
             return Shutter(
                 json_dict[DEVICE_ID],
                 json_dict[SERIAL_NUMBER],
