@@ -71,7 +71,7 @@ class CloudApi(ABC):
         response = await self.__request(
             "POST",
             f"api/device/{device_id}/command/{command}",
-            body=body,
+            data=body,
         )
 
         _LOGGER.debug("Response from server: %s", response.status)
@@ -111,8 +111,6 @@ class CloudApi(ABC):
         else:
             headers = dict(headers)
 
-        body = kwargs.get("body")
-
         access_token = await self.async_get_access_token()
 
         headers["Authorization"] = f"Bearer {access_token}"
@@ -123,5 +121,4 @@ class CloudApi(ABC):
             f"{self.host}/{url}",
             **kwargs,
             headers=headers,
-            data=body
         )
