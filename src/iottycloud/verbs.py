@@ -17,6 +17,7 @@ STATUS_OFF = "off"
 STATUS_OPENING = "opening"
 STATUS_CLOSING = "closing"
 STATUS_STATIONATRY = "stationary"
+OPEN_PERCENTAGE = "open_percentage"
 
 COMMAND_TURNON = "turnon"
 COMMAND_TURNOFF = "turnoff"

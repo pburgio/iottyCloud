@@ -3,7 +3,7 @@
 import logging
 from enum import Enum
 
-import iottycloud.verbs as verbs
+from iottycloud import verbs
 from iottycloud.device import Device
 from iottycloud.verbs import (
     COMMAND_CLOSE,
@@ -49,7 +49,7 @@ class Shutter(Device): # pylint: disable=too-few-public-methods
             case _:
                 _LOGGER.error("Unknown shutter status")
                 raise ValueError(status)
-            
+
         _LOGGER.debug("[%s] updating status to '%s'", self.name, status)
 
     def update_percentage(self, percentage: int) -> None:
