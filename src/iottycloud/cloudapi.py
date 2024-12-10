@@ -66,9 +66,13 @@ class CloudApi(ABC):
 
         return await response.json()
 
-    async def command(self, device_id: str, command: str) -> Any:
+    async def command(self, device_id: str, command: str, body: dict[str, Any] = None) -> Any:
         """Issue a command to a iotty device EP."""
-        response = await self.__request("POST", f"api/device/{device_id}/command/{command}")
+        response = await self.__request(
+            "POST",
+            f"api/device/{device_id}/command/{command}",
+            body=body,
+        )
 
         _LOGGER.debug("Response from server: %s", response.status)
 
@@ -98,7 +102,7 @@ class CloudApi(ABC):
         if response.status / 100 == 5:
             raise CloudError("Internal server error")
 
-    async def __request(self, method: str, url: str, **kwargs) -> ClientResponse:
+    async def __request(self, method: str, url: str, body: dict[str, Any] = None, **kwargs) -> ClientResponse:
         """Make a request."""
         headers = kwargs.get("headers")
 
@@ -111,10 +115,12 @@ class CloudApi(ABC):
 
         headers["Authorization"] = f"Bearer {access_token}"
         headers[HTTP_HEADER_CLIENT_ID] = self._client_id
+        headers["Content-Type"] = "application/json"
 
         return await self.websession.request(
             method,
             f"{self.host}/{url}",
             **kwargs,
+            json=body,
             headers=headers,
         )
