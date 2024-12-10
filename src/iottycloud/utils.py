@@ -2,15 +2,18 @@
 import logging
 from typing import Any
 
+from iottycloud.device import Device
 from iottycloud.lightswitch import LightSwitch
 from iottycloud.shutter import Shutter
+from iottycloud.outlet import Outlet
 from iottycloud.verbs import (
     DEVICE_ID,
     DEVICE_NAME,
     DEVICE_TYPE,
     SERIAL_NUMBER,
     LS_DEVICE_TYPE_UID,
-    SH_DEVICE_TYPE_UID
+    SH_DEVICE_TYPE_UID,
+    OU_DEVICE_TYPE_UID
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -37,21 +40,33 @@ class Factory: # pylint: disable=too-few-public-methods
 
         device_type = json_dict[DEVICE_TYPE]
 
+        device: Device
+
         if device_type == LS_DEVICE_TYPE_UID:
-            return LightSwitch(
+            device = LightSwitch(
                 json_dict[DEVICE_ID],
                 json_dict[SERIAL_NUMBER],
                 json_dict[DEVICE_TYPE],
                 json_dict[DEVICE_NAME],
             )
 
-        if device_type == SH_DEVICE_TYPE_UID:
-            return Shutter(
+        elif device_type == SH_DEVICE_TYPE_UID:
+            device = Shutter(
                 json_dict[DEVICE_ID],
                 json_dict[SERIAL_NUMBER],
                 json_dict[DEVICE_TYPE],
                 json_dict[DEVICE_NAME],
             )
 
-        _LOGGER.warning("Unknown iotty Device type '%s'", device_type)
-        return None
+        elif device_type == OU_DEVICE_TYPE_UID:
+            device = Outlet(
+                json_dict[DEVICE_ID],
+                json_dict[SERIAL_NUMBER],
+                json_dict[DEVICE_TYPE],
+                json_dict[DEVICE_NAME],
+            )
+        else:
+            _LOGGER.warning("Unknown iotty Device type '%s'", device_type)
+            return None
+
+        return device
